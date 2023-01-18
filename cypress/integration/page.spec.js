@@ -1,6 +1,6 @@
 const page = {
   message: () => cy.get('.App__message'),
-  body: () => cy.get('body'),
+  field: () => cy.get('input'),
 };
 
 let failed = false;
@@ -22,28 +22,28 @@ describe('Page', () => {
   });
 
   it('should print a correct message after pressing [Enter]', () => {
-    page.body().type('{enter}');
+    page.field().type('{enter}');
 
     page.message()
       .should('have.text', 'The last pressed key is [Enter]');
   });
 
   it('should print a correct message after pressing [Esc]', () => {
-    page.body().type('{esc}');
+    page.field().type('{esc}');
 
     page.message()
       .should('have.text', 'The last pressed key is [Escape]');
   });
 
   it('should print a correct message after pressing a digit', () => {
-    page.body().type('1');
+    page.field().type('1');
 
     page.message()
       .should('have.text', 'The last pressed key is [1]');
   });
 
   it('should print a correct message after pressing a letter', () => {
-    page.body().type('a');
+    page.field().type('a');
 
     page.message()
       .should('have.text', 'The last pressed key is [a]');
